@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback-TD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Ательє Threaded Dreams</h1>
+        <img src="images/logo.png" alt="Логотип ательє" width="70px" height="70px">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a>
+            <li><a href="reviews.html">Відгуки про товар</a></li>
+            <li><a href="feedback.html">Зворотній зв'язок</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Зворотній зв'язок</h2>
+        <form>
+            <label for="name">Прізвище та ім’я:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="age">Вік:</label>
+            <input type="number" id="age" name="age" min="1" required><br><br>
+
+            <label for="client-status">Чи є клієнтом ательє?</label>
+            <select id="client-status" name="client-status" required>
+                <option value="yes" selected>Так</option>
+                <option value="planning">Планую стати</option>
+                <option value="no">Ні</option>
+            </select><br><br>
+
+            <label for="purposes">Мета зворотнього зв’язку:</label>
+            <input list="purposes" name="purpose" id="purpose" required>
+            <datalist id="purposes" name="purpose">
+                <option value="Співпраця">
+                <option value="Скарга на неякісний пошив">
+                <option value="Пропозиція">
+                <option value="Наявність помилки">
+            </datalist><br><br>
+
+            <label for="details">Детально:</label>
+            <textarea id="details" name="details" maxlength="500" rows="4" cols="50" placeholder="Опишіть Ваше звернення"></textarea><br><br>
+
+            <label>
+                <input type="checkbox" name="consent" required> Згода на обробку інформації
+            </label><br><br>
+
+            <button type="submit">Відправити</button>
+        </form>
+    </main>
+
+    <aside>
+        <br><button onclick="window.location.href='index.html'">← На головну</button>
+    </aside>
+
+    <footer>
+        <p>&copy; 2023 Ательє з пошиття одягу</p>
+    </footer>
+</body>
+</html>
