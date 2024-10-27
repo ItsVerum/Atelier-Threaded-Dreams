@@ -5,11 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atelier Threaded Dreams</title>
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Внутрішній стиль для головної сторінки */
+        article {
+            padding: 20px;
+        }
+    
+        /* flexbox модифікації */
+        .description, .purpose-list {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+    </style>    
 </head>
 <body>
     <header>
         <h1>Ательє Threaded Dreams</h1>
-        <img src="images/logo.png" alt="Логотип ательє" width="70px" height="70px">
+        <img src="images/logo.png" alt="Логотип ательє" class="logo">
     </header>
 
     <nav>
@@ -20,7 +36,7 @@
         </ul>
     </nav>
 
-    <aside>
+    <aside id="registration-button">
         <button onclick="window.location.href='login.html'">Перейти у власний кабінет</button>
         <button onclick="window.location.href='register.html'">Зареєструватись</button>
     </aside>
@@ -97,7 +113,7 @@
             </section>
             <p><a href="https://external-resources.com" target="_blank">Посилання на ресурс</a> для отримання додаткової інформації.</p>
             <h3>Наші контакти:</h3>
-            <p><b>Адреса:</b><i><a href="https://maps.app.goo.gl/iXkmW1AkoNpGEF6W6"> Дніпровська набережна 12, Київ, Україна</a></i><br>
+            <p class="contact-info"><b>Адреса:</b><i><a href="https://maps.app.goo.gl/iXkmW1AkoNpGEF6W6"> Дніпровська набережна 12, Київ, Україна</a></i><br>
             <b>Tелефон:</b> +380123456789<br>
             <b>Email:</b> <u>ThreadedDreams@atelier.com</u></p>
         </article>
