@@ -27,15 +27,18 @@ const users = [
 
 // Функція для фільтрації користувачів за місяцем та часом
 function filterByMonthAndTime(users, month, time) {
+    // Фільтруємо користувачів, які звернулися у вказаний місяць і час
     const filteredUsers = users.filter(user => {
-        const userMonth = user.date.getMonth() + 1; // Місяці в JavaScript нумеруються з 0
+        const userMonth = user.date.getMonth() + 1; // Отримуємо місяць звернення (+1, бо місяці починаються з 0)
         return userMonth === month && user.time === time;
     });
 
+    // Виводимо результат: повідомлення, якщо користувачів немає, або їх список
     if (filteredUsers.length === 0) {
         console.log(`1. Немає користувачів, які звернулися у ${month}-й місяць о ${time}.`);
     } else {
         console.log(`1. Користувачі, які звернулися у ${month}-й місяць о ${time}:`);
+        // Виводимо інформацію про кожного користувача
         filteredUsers.forEach((user, index) => {
             console.log(`   ${index + 1}. ${user.firstName} ${user.lastName}`);
             console.log(`       Email: ${user.email}`);
@@ -49,6 +52,7 @@ function filterByMonthAndTime(users, month, time) {
 function findYoungestUser(users) {
     let youngestUser = users[0]; // Початкове значення — перший користувач
 
+    // Перебираємо всіх користувачів і шукаємо того, хто має найменший вік
     users.forEach(user => {
         if (user.age < youngestUser.age) {
             youngestUser = user;
@@ -65,6 +69,7 @@ function findYoungestUser(users) {
 
 // Функція для класифікації користувачів за віком
 function classifyByAge(users) {
+    // Створюємо три групи: молодь, середній вік і похилий вік
     const ageClasses = {
         youth: users.filter(user => user.age < 25),
         middle: users.filter(user => user.age >= 25 && user.age <= 60),
@@ -78,20 +83,21 @@ function classifyByAge(users) {
     console.log(`       Похилий вік (більше 60 років): ${ageClasses.senior.length}`);
 
     // Виведення користувачів кожного класу (додатково для зручності)
-console.log("\n\n   • Користувачі у класі 'Молодь':");
-ageClasses.youth.forEach(user => console.log(`      ${user.firstName} ${user.lastName}, ${user.age} років`));
+    console.log("\n\n   • Користувачі у класі 'Молодь':");
+    ageClasses.youth.forEach(user => console.log(`      ${user.firstName} ${user.lastName}, ${user.age} років`));
 
-console.log("\n\n   • Користувачі у класі 'Середній':");
-ageClasses.middle.forEach(user => console.log(`      ${user.firstName} ${user.lastName}, ${user.age} років`));
+    console.log("\n\n   • Користувачі у класі 'Середній':");
+    ageClasses.middle.forEach(user => console.log(`      ${user.firstName} ${user.lastName}, ${user.age} років`));
 
-console.log("\n\n   • Користувачі у класі 'Похилий':");
-ageClasses.senior.forEach(user => console.log(`      ${user.firstName} ${user.lastName}, ${user.age} років`));
+    console.log("\n\n   • Користувачі у класі 'Похилий':");
+    ageClasses.senior.forEach(user => console.log(`      ${user.firstName} ${user.lastName}, ${user.age} років`));
 
 }
 
 // Функція для сортування користувачів за email
 function sortByEmail(users) {
     const sortedUsers = users.sort((a, b) => a.email.localeCompare(b.email));
+    
     console.log("\n\n4. Сортування користувачів за E-mail:");
     sortedUsers.forEach(user => console.log(`   ${user.firstName} ${user.lastName}, email: ${user.email}, мета: ${user.purpose}`));
 }

@@ -10,7 +10,7 @@ class Product {
         this.cost = cost;
     }
 
-    // Метод для розрахунку середньої кількості переглядів
+    // Розрахунок середньої кількості переглядів на основі двох днів
     getAverageViews() {
         return (this.viewsDay1 + this.viewsDay2) / 2;
     }
@@ -48,11 +48,14 @@ function sortAndDisplayProducts(products) {
 // Завдання 2: Знаходження товару з максимальними viewsDay2
 function findMaxViewsDay2(products) {
     let maxProduct = products[0];
+
+    // Перебираємо товари, щоб знайти товар із найбільшим значенням viewsDay2
     products.forEach(product => {
         if (product.viewsDay2 > maxProduct.viewsDay2) {
             maxProduct = product;
         }
     });
+
     console.log(`2. Товар з максимальними переглядами:\n   Назва: ${maxProduct.name}\n   Тип тканини: ${maxProduct.fabricType}`)
 }
 
@@ -63,7 +66,7 @@ function addProduct(products, newProduct) {
     } else {
         // Сортуємо товари за зростанням вартості
         products.sort((a, b) => a.cost - b.cost);
-
+        // Шукаємо позицію для вставки нового товару
         const index = products.findIndex(product => product.cost > newProduct.cost);
         if (index === -1) {
             products.push(newProduct); // Додаємо в кінець, якщо товар найдорожчий
@@ -82,14 +85,17 @@ function addProduct(products, newProduct) {
 
 // Завдання 4: Обчислення загальної тривалості пошиття
 function calculateTotalDuration(products, fabricType) {
+    // Фільтруємо товари за заданим типом тканини
     const relevantProducts = products.filter(product => product.fabricType === fabricType);
     const count = relevantProducts.length;
-
+    // Розраховуємо загальну тривалість залежно від кількості товарів
     if (count === 1) {
-        return relevantProducts[0].sewingDuration;
+        return relevantProducts[0].sewingDuration; // Для одного товару — звичайна тривалість
     } else if (count <= 3) {
+        // Якщо товарів до 3-х, множимо тривалість на 1.1
         return relevantProducts.reduce((total, product) => total + product.sewingDuration * 1.1, 0);
     } else {
+        // Якщо більше 3-х, множимо тривалість на 2
         return relevantProducts.reduce((total, product) => total + product.sewingDuration * 2, 0);
     }
 }
