@@ -1,3 +1,28 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const textarea = document.getElementById("details");
+    const tooltip = document.querySelector(".tooltip");
+
+    // Показуємо підказку при фокусі
+    textarea.addEventListener("focus", () => {
+        tooltip.style.visibility = "visible";
+        tooltip.style.opacity = "1";
+    });
+
+    // Ховаємо підказку, якщо втрачаємо фокус
+    textarea.addEventListener("blur", () => {
+        tooltip.style.visibility = "hidden";
+        tooltip.style.opacity = "0";
+    });
+});
+
+
+
+
+
+
+
+
+
 // Клас для опису користувачів
 class User {
     constructor(lastName, firstName, age, email, purpose, date, time) {

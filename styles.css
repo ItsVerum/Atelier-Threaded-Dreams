@@ -1,5 +1,4 @@
 header {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -7,11 +6,39 @@ header {
     background-color: #f9f9f9;
     padding: 10px 0;
     box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
 
-[class^="catalog-h"]{
-    position: fixed;
+#dynamic-elements-container {
+    position: absolute;
     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Щоб зображення не блокували взаємодію з іншими елементами */
+}
+
+.dynamic-item {
+    position: absolute;
+    opacity: 0;
+    animation: appear-disappear 5s ease-in-out;
+    transition: transform 1s linear;
+}
+
+@keyframes appear-disappear {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .logo {
@@ -30,6 +57,7 @@ header h1 {
     color: hsl(248, 53%, 58%);
     margin-left: 10px;
     vertical-align: middle;
+    line-height: 1.2;
 }
 
 nav ul {
@@ -37,7 +65,6 @@ nav ul {
     justify-content: center;
     list-style-type: none;
     padding: 0;
-    margin: 90px 0 0 0;
     font-size: large;
 }
 
@@ -59,7 +86,7 @@ nav ul li a:hover {
 #registration-button {
     position: fixed;
     right: 10px;
-    top: 20%;
+    top: 17%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
@@ -203,4 +230,144 @@ li:first-child a::before {
     order: 0;
     align-self: flex-start;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+#fabric-types-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #DAA520;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+#fabric-types-btn:hover {
+    background-color: #b88e1a;
+}
+
+/* Підменю (випадаючий список) */
+.dropdown-menu {
+    display: none; /* Приховано за замовчуванням */
+    position: absolute;
+    background-color: #f9f9f9;
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.dropdown-menu li {
+    padding: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.dropdown-menu li:hover {
+    color: #DAA520;
+    cursor: pointer;
+}
+
+
+/* Контейнер для фліп-карти */
+.flip-card {
+    background-color: transparent;
+    width: 150px;
+    height: 200px;
+    perspective: 1000px; /* Ефект перспективи */
+    margin: 0 auto; /* Центрування картки */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d; /* Зберігаємо 3D-простір для обох сторін */
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg); /* Анімація перевертання */
+}
+
+/* Лицьова і зворотня сторони */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Приховуємо задню сторону, коли вона перевернута */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Лицьова сторона */
+.flip-card-front {
+    background-color: #fff;
+}
+
+/* Зворотня сторона */
+.flip-card-back {
+    background-color: #f9f9f9;
+    color: #333;
+    transform: rotateY(180deg); /* Перевертаємо задню сторону */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+
+
+
+/* Стиль текстового поля */
+textarea:hover,
+textarea:focus {
+    background-color: #f0f8ff; /* Світлий фон */
+    border: 2px solid #DAA520; /* Рамка */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь */
+    outline: none; /* Видаляємо стандартний фокус */
+}
+
+/* Контейнер для поля з підказкою */
+.tooltip-container {
+    position: relative; /* Позиціювання для підказки */
+    display: inline-block;
+}
+
+/* Стиль підказки */
+.tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 10px); /* Розташування праворуч від поля */
+    transform: translateY(-50%);
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    width: 200px;
+    text-align: center;
+    transition: visibility 0.3s, opacity 0.3s;
+}
+
+/* Підказка при фокусі або наведенні */
+.tooltip-container:hover .tooltip,
+textarea:focus + .tooltip {
+    visibility: visible;
+    opacity: 1;
 }

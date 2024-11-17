@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script async src="scripts/catalog.js"></script>
+    <script defer src="scripts/catalog.js"></script>
     <header class="catalog-header">
         <h1>Ательє Threaded Dreams</h1>
         <img src="images/logo.png" alt="Логотип ательє" class="logo">
@@ -20,12 +20,32 @@
         </ul>
     </nav>
 
+    <aside>
+        <button id="fabric-types-btn">Типи тканини</button>
+        <ul id="fabric-types-menu" class="dropdown-menu">
+            <!-- Елементи будуть додані програмно через JavaScript -->
+        </ul>
+    </aside>
+
     <main>
         <h2>Наші товари</h2>
         <section class="catalog">
             <div class="catalog-item">
                 <h3>Сукня</h3>
-                <img src="images/goods/dress.jpg" alt="Сукня" height="200">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <!-- Лицьова сторона -->
+                        <div class="flip-card-front">
+                            <img src="images/goods/dress.jpg" alt="Сукня" height="200" width="150">
+                        </div>
+                        <!-- Зворотня сторона -->
+                        <div class="flip-card-back">
+                            <p>Прати при температурі 30°C</p>
+                            <p>Не відбілювати</p>
+                            <p>Сушити на відкритому повітрі</p>
+                        </div>
+                    </div>
+                </div>
                 <p title="Тип тканини для пошиття">Тип тканини: Костюмна</p>
                 <h4>Основні характеристики:</h4>
                 <ul>

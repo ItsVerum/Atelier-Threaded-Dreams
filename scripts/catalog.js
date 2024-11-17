@@ -1,3 +1,47 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const fabricTypesBtn = document.getElementById("fabric-types-btn");
+    const fabricTypesMenu = document.getElementById("fabric-types-menu");
+
+    // Масив доступних типів тканин
+    const fabricTypes = ["Костюмна", "Льон", "Бавовна", "Поліестер", "Шовк"];
+
+    // Додаємо типи тканин до підменю
+    fabricTypes.forEach(type => {
+        const listItem = document.createElement("li");
+        listItem.textContent = type;
+        fabricTypesMenu.appendChild(listItem);
+    });
+
+    // Показ/приховування підменю при натисканні кнопки
+    fabricTypesBtn.addEventListener("click", () => {
+        const isMenuVisible = fabricTypesMenu.style.display === "block";
+        fabricTypesMenu.style.display = isMenuVisible ? "none" : "block";
+    });
+
+    // Приховуємо підменю при натисканні за межами кнопки
+    document.addEventListener("click", (event) => {
+        if (!fabricTypesBtn.contains(event.target) && !fabricTypesMenu.contains(event.target)) {
+            fabricTypesMenu.style.display = "none";
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const cardBacks = document.querySelectorAll(".flip-card-back");
+
+    cardBacks.forEach(cardBack => {
+        cardBack.addEventListener("mouseenter", () => {
+            console.log("Навели на зворотню сторону картки!");
+        });
+    });
+});
+
+
+
+
+
+
+
 // Клас для опису товарів
 class Product {
     constructor(id, name, fabricType, viewsDay1, viewsDay2, sewingDuration, cost) {
